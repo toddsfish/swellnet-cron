@@ -9,13 +9,16 @@ A Node.js application that scrapes surf forecasts from Swellnet.com and formats 
    npm install
    ```
 
-2. Create a `.env` file in the project root with your Swellnet credentials:
+2. Compile Typescript to js (lib/index.js)
+   npm run build
+
+3. Create a `.env` file in the lib folder with Swellnet credentials:
    ```
    SWELLNET_USERNAME=your_username
    SWELLNET_PASSWORD=your_password
    ```
 
-3. Install Playwright browsers:
+4. Install Playwright browsers:
    ```
    npx playwright install
    ```
