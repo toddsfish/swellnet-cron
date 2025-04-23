@@ -148,7 +148,11 @@ async function main() {
       await firstPostLink.click();
 
       // Wait for the post page to load
-      await page.waitForLoadState('networkidle');
+      await page.waitForSelector('.node-forecaster-notes', {
+        state: 'attached', // or 'visible' if you need to ensure it's visible
+        timeout: 30000, // 30 seconds timeout
+      });
+
       console.log('Post loaded successfully');
 
       // Get current URL to verify we're on the correct page

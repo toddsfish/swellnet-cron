@@ -5,7 +5,7 @@ const project = new typescript.TypeScriptProject({
   packageManager: javascript.NodePackageManager.NPM,
   projenrcTs: true,
   github: false,
-  gitignore: [".env"],
+  gitignore: ['.env'],
   deps: [
     'crawlee',
     'playwright',
