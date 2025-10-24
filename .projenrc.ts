@@ -10,11 +10,18 @@ const project = new typescript.TypeScriptProject({
     'crawlee',
     'playwright',
     'dotenv',
+    'fastify',
     'tslib@^2.8.1', // Using exact version that works with crawlee
   ] /* Runtime dependencies of this module. */,
   // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
   // devDeps: [],             /* Build dependencies for this module. */
   // packageName: undefined,  /* The "name" in package.json. */
+});
+
+// Add custom npm scripts
+project.addTask('webhook', {
+  description: 'Start the webhook server',
+  exec: 'node lib/webhook.js',
 });
 
 project.synth();

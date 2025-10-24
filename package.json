@@ -18,6 +18,7 @@
     "unbump": "npx projen unbump",
     "upgrade": "npx projen upgrade",
     "watch": "npx projen watch",
+    "webhook": "npx projen webhook",
     "projen": "npx projen"
   },
   "devDependencies": {
@@ -41,6 +42,7 @@
   "dependencies": {
     "crawlee": "^3.13.2",
     "dotenv": "^16.5.0",
+    "fastify": "^5.6.1",
     "playwright": "^1.52.0",
     "tslib": "^2.8.1"
   },

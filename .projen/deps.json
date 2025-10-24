@@ -80,6 +80,10 @@
       "type": "runtime"
     },
     {
+      "name": "fastify",
+      "type": "runtime"
+    },
+    {
       "name": "playwright",
       "type": "runtime"
     },
