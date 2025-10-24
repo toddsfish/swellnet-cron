@@ -2,11 +2,11 @@ import { scrapeSwellnetForecast } from './scraper';
 
 async function main() {
   try {
-    const formattedContent = await scrapeSwellnetForecast();
+    const forecast = await scrapeSwellnetForecast();
 
-    console.log('\nFormatted Forecast:');
+    console.log('\nRaw Forecast:');
     console.log('==================');
-    console.log(formattedContent);
+    console.log(forecast);
     console.log('==================\n');
 
     process.exit(0);

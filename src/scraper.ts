@@ -13,65 +13,6 @@ if (result.error && (result.error as NodeJS.ErrnoException).code !== 'ENOENT') {
   console.error('Error loading .env file:', result.error);
 }
 
-/**
- * Format the raw content as markdown
- * @param content The raw content text
- * @returns Formatted markdown string
- */
-function formatContentAsMarkdown(content: string): string {
-  // Split content into lines for processing
-  const lines = content.split('\n').map((line) => line.trim());
-
-  let formattedContent = '';
-  let inList = false;
-
-  // Process each line
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-
-    // Skip empty lines
-    if (!line) {
-      formattedContent += '\n';
-      continue;
-    }
-
-    // Check if this is a title line (first non-empty line)
-    if (i === 0 || (i > 0 && !lines.slice(0, i).some((l) => l.trim()))) {
-      formattedContent += `# ${line}\n`;
-      continue;
-    }
-
-    // Check for author/date line
-    if (line.startsWith('by ') || line.includes('(issued ')) {
-      formattedContent += `*${line}*\n\n`;
-      continue;
-    }
-
-    // Check for section headers
-    if (line.endsWith(':') && line === line.toUpperCase()) {
-      formattedContent += `\n## ${line}\n`;
-      continue;
-    }
-
-    // Check for bullet points
-    if (line.startsWith('•') || line.startsWith('-') || line.startsWith('*')) {
-      if (!inList) {
-        formattedContent += '\n';
-        inList = true;
-      }
-      formattedContent += `${line}\n`;
-      continue;
-    } else if (inList) {
-      inList = false;
-      formattedContent += '\n';
-    }
-
-    // Regular paragraph
-    formattedContent += `${line}\n\n`;
-  }
-
-  return formattedContent;
-}
 
 async function isLoggedIn(context: BrowserContext): Promise<boolean> {
   const cookies = await context.cookies();
@@ -79,8 +20,8 @@ async function isLoggedIn(context: BrowserContext): Promise<boolean> {
 }
 
 /**
- * Scrapes the latest surf forecast from Swellnet and returns it as formatted markdown
- * @returns Promise that resolves to the formatted forecast content
+ * Scrapes the latest surf forecast from Swellnet and returns raw content
+ * @returns Promise that resolves to the raw forecast content
  */
 export async function scrapeSwellnetForecast(): Promise<string> {
   // Verify credentials are loaded
@@ -169,10 +110,9 @@ export async function scrapeSwellnetForecast(): Promise<string> {
       // Close browser
       await browser.close();
 
-      // Format the content in markdown and return
+      // Return raw content
       if (content) {
-        const formattedContent = formatContentAsMarkdown(content.trim());
-        return formattedContent;
+        return content.trim();
       } else {
         throw new Error('No content found');
       }

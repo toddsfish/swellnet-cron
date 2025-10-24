@@ -24,7 +24,7 @@ server.post('/webhook', async (_request, reply) => {
 
     const forecast = await scrapeSwellnetForecast();
 
-    console.log('\nFormatted Forecast:');
+    console.log('\nRaw Forecast:');
     console.log('==================');
     console.log(forecast);
     console.log('==================\n');
@@ -32,7 +32,7 @@ server.post('/webhook', async (_request, reply) => {
     return await reply.code(200).send({
       success: true,
       message: 'Forecast scraped successfully',
-      data: forecast,
+      forecast: forecast,
     });
   } catch (error) {
     console.error('Scraper error:', error);

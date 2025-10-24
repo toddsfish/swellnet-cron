@@ -1,5 +1,7 @@
 # Swellnet Cron
 
+A Node.js application that scrapes surf forecasts from Swellnet.com and returns raw content for further processing (e.g., AI formatting).
+
 ## Setup
 
 1. Install dependencies:
