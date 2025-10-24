@@ -1,5 +1,5 @@
-# Dependencies
-node_modules/
+# Dependencies - commented out, we need to copy node_modules now
+# node_modules/
 
 # Source files (we only need compiled lib/)
 src/
@@ -34,7 +34,7 @@ README.md
 .projen/
 .projenrc.ts
 
-# Environment (will be passed at runtime)
+# Environment (never copy secrets into image!)
 .env
 
 # Misc

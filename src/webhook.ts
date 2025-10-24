@@ -4,7 +4,7 @@ import Fastify from 'fastify';
 import { scrapeSwellnetForecast } from './scraper';
 
 // Load environment variables
-const envPath = path.join(__dirname, '.env');
+const envPath = path.join(__dirname, '..', '.env');
 dotenv.config({ path: envPath });
 
 const server = Fastify({

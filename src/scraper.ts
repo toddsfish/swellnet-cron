@@ -4,7 +4,7 @@ import * as dotenv from 'dotenv';
 import { BrowserContext } from 'playwright';
 
 // Fix for __dirname in ES modules
-const envPath = path.join(__dirname, '.env');
+const envPath = path.join(__dirname, '..', '.env');
 
 // Add debug logging for env file loading
 console.log('Attempting to load .env from:', envPath);

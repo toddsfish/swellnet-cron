@@ -2,9 +2,11 @@ FROM mcr.microsoft.com/playwright:v1.52.0-jammy
 
 WORKDIR /app
 
-# Copy package files and install dependencies
+# Copy package files
 COPY package*.json ./
-RUN npm ci --production
+
+# Copy node_modules from local (avoids network issues)
+COPY node_modules ./node_modules
 
 # Copy built application
 COPY lib ./lib
