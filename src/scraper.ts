@@ -94,7 +94,7 @@ export async function scrapeSwellnetForecast(): Promise<string> {
 
   const browser = await launchPlaywright({
     launchOptions: {
-      headless: false,
+      headless: true,
     },
   });
 

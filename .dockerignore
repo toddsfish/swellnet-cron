@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+
+# Source files (we only need compiled lib/)
+src/
+test/
+*.ts
+!*.d.ts
+tsconfig*.json
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Build artifacts
+dist/
+coverage/
+test-reports/
+*.tsbuildinfo
+
+# Documentation
+README.md
+*.md
+
+# IDE
+.vscode/
+.idea/
+
+# CI/CD
+.github/
+
+# Projen
+.projen/
+.projenrc.ts
+
+# Environment (will be passed at runtime)
+.env
+
+# Misc
+*.log
+npm-debug.log*
+Dockerfile
+.dockerignore
