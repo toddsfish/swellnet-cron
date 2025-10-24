@@ -8,7 +8,7 @@ import { scrapeSwellnetForecast } from './scraper';
 const envPath = path.join(__dirname, '..', '.env');
 const result = dotenv.config({ path: envPath });
 
-if (result.error && result.error.code !== 'ENOENT') {
+if (result.error && (result.error as NodeJS.ErrnoException).code !== 'ENOENT') {
   // Only log errors that aren't "file not found" (ENOENT)
   console.error('Error loading .env file:', result.error);
 }
