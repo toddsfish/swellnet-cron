@@ -1,0 +1,17 @@
+services:
+  swellnet-webhook:
+    image: swellnet-webhook
+    container_name: swellnet-webhook
+    ports:
+      - "3000:3000"
+    environment:
+      - SWELLNET_USERNAME=${SWELLNET_USERNAME}
+      - SWELLNET_PASSWORD=${SWELLNET_PASSWORD}
+      - PORT=${PORT}
+    ## Docker network needs to be the same as n8n container
+    networks:
+      - n8n_default
+## Set network to external network created by n8n docker compose
+networks:
+  n8n_default:
+    external: true
